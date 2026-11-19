@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brain and Beyond — notes on the brain, science, and being human</title>
+<meta name="description" content="Notes on the brain, science, and being human. Simple stories about how your brain works and why you feel what you feel.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#05060F}
+a{color:#9FE6FF}a:hover{color:#D6F6FF}
+.dots{background-image:radial-gradient(1px 1px at 20px 30px,rgba(159,230,255,.35),transparent),radial-gradient(1px 1px at 140px 110px,rgba(195,181,245,.3),transparent),radial-gradient(1.2px 1.2px at 260px 220px,rgba(242,213,141,.3),transparent);background-size:180px 180px,260px 260px,340px 340px}
+.nl{color:#F1EEF8;text-decoration:none}
+.nl:hover{color:#9FE6FF}
+.pulse{animation:pu 2.8s ease-in-out infinite}
+@keyframes pu{0%,100%{opacity:.35}50%{opacity:1}}
+.cta{transition:box-shadow .3s,transform .3s}
+.cta:hover{box-shadow:0 0 50px rgba(159,230,255,.6);transform:translateY(-2px)}
+.ghost{transition:border-color .3s,box-shadow .3s}
+.ghost:hover{border-color:#9FE6FF !important;box-shadow:0 0 24px rgba(159,230,255,.25)}
+.card{text-decoration:none;color:#F1EEF8;transition:border-color .35s,box-shadow .35s,transform .35s}
+.card:hover{border-color:rgba(159,230,255,.6) !important;box-shadow:0 0 60px rgba(159,230,255,.14),inset 0 0 40px rgba(159,230,255,.05);transform:translateY(-4px)}
+.card:hover h3{color:#D6F6FF}
+.brainc .nb{transition:opacity .3s}
+.brainc:hover .nb,.brainc:focus-visible .nb{animation:nb 1.2s ease-in-out infinite}
+@keyframes nb{0%,100%{opacity:.35}50%{opacity:1}}
+.feel{transition:transform .35s}
+.feel:hover,.feel:focus-visible{animation:feel 3s linear infinite;transform:translateY(-4px)}
+.feel .orb{animation:orb 9s linear infinite}
+.feel:hover .orb,.feel:focus-visible .orb{animation-duration:3s}
+@keyframes feel{0%,100%{border-color:rgba(159,230,255,.7);box-shadow:0 0 60px rgba(159,230,255,.22)}33%{border-color:rgba(255,182,225,.7);box-shadow:0 0 60px rgba(255,182,225,.22)}66%{border-color:rgba(242,213,141,.7);box-shadow:0 0 60px rgba(242,213,141,.22)}}
+@keyframes orb{0%,100%{background:#9FE6FF;box-shadow:0 0 30px 10px rgba(159,230,255,.5)}33%{background:#FFB6E1;box-shadow:0 0 30px 10px rgba(255,182,225,.5)}66%{background:#F2D58D;box-shadow:0 0 30px 10px rgba(242,213,141,.5)}}
+.flip{perspective:1200px;background:none;border:none;padding:0;text-align:left;color:#F1EEF8;cursor:pointer;font:inherit}
+.flip .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:28px;padding:36px;display:flex;flex-direction:column;gap:18px;box-sizing:border-box}
+.flip:hover .face,.flip:focus-visible .face{border-color:rgba(242,213,141,.6) !important;box-shadow:0 0 60px rgba(242,213,141,.14)}
+.wire{position:absolute;left:12%;right:12%;top:50%;height:1px;background:rgba(159,230,255,.25)}
+.wire span{position:absolute;top:-3px;width:7px;height:7px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 12px 4px rgba(159,230,255,.8);animation:wire 4s linear infinite}
+@keyframes wire{0%{left:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:100%;opacity:0}}
+.axon{position:absolute;left:0;top:0;bottom:0;width:64px;pointer-events:none}
+@media (max-width:980px){.wire{display:none}.axon{width:28px;opacity:.6}}
+.heart{animation:hb 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes hb{0%,100%{transform:scale(1);opacity:.12}15%{transform:scale(1.18);opacity:.3}30%{transform:scale(1);opacity:.14}45%{transform:scale(1.1);opacity:.24}}
+.pop{animation:pop .9s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@media (prefers-reduced-motion:reduce){.heart,.pop{animation:none}.brainc:hover .nb,.feel:hover,.feel .orb,.wire span{animation:none}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none}.cta:hover,.card:hover{transform:none}}
+</style>
+</head>
+<body>
+<div style="background: #05060F; font-family: Inter, system-ui, sans-serif; color: #F1EEF8; min-height: 100vh; overflow: hidden">
+
+<div class="hero" data-seed="42" data-count="70" data-w="1440" data-h="880" style="position: relative; min-height: 880px; overflow: hidden; cursor: crosshair">
+<svg aria-hidden="true" viewBox="0 0 1440 880" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<g class="net-edges" stroke-linecap="round"></g><g class="net-nodes"></g>
+</svg>
+<div aria-hidden="true" class="spot" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle 300px at var(--mx, 70%) var(--my, 38%), rgba(5,6,15,0) 0%, rgba(5,6,15,.55) 50%, rgba(5,6,15,.94) 100%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 160px; pointer-events: none; background: linear-gradient(rgba(5,6,15,0), #05060F)"></div>
+
+<header style="position: relative; max-width: 1240px; margin: 0 auto; padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<a href="#top" class="nl" style="font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; font-style: italic">Brain and Beyond</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
+<a href="#topics" class="nl" style="padding: 12px 0">Topics</a>
+<a href="#latest" class="nl" style="padding: 12px 0">Articles</a>
+<a href="#about" class="nl" style="padding: 12px 0">About</a>
+<button type="button" id="soundBtn" aria-pressed="false" class="ghost" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid rgba(241,238,248,.25); background: rgba(5,6,15,.5); color: #F1EEF8; font-family: Inter, system-ui, sans-serif; font-size: 14px; font-weight: 600; cursor: pointer">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9FE6FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="17" cy="16" r="3"></circle></svg>
+<span id="soundLabel">Play sound</span>
+</button>
+</nav>
+</header>
+
+<section id="top" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 120px 40px 160px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; pointer-events: none">
+<p class="pulse" style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #9FE6FF">Move your cursor ✦ wake them up</p>
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(56px, 9vw, 150px); line-height: 0.92; letter-spacing: -0.03em">Every thought<br><em style="color: #C3B5F5">lights a path.</em></h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.7; color: #B9B7CC; max-width: 560px">Simple stories about how your brain works and why you feel what you feel.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; pointer-events: auto">
+<a href="dreams.html" class="cta" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 32px; border-radius: 999px; background: #F1EEF8; color: #05060F; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 0 30px rgba(159,230,255,.35)">Enter the mind</a>
+<a href="#topics" class="ghost" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 32px; border-radius: 999px; border: 1px solid rgba(241,238,248,.25); color: #F1EEF8; font-weight: 600; font-size: 16px; text-decoration: none">Explore topics</a>
+</div>
+</section>
+</div>
+
+<div id="axWrap" style="position: relative">
+<div aria-hidden="true" class="axon">
+<svg viewBox="0 0 60 1000" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%" fill="none">
+<path d="M30 0C10 120 50 240 30 360S10 600 30 720 50 900 30 1000" stroke="rgba(159,230,255,.14)" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path pathLength="1000" d="M30 0C10 120 50 240 30 360S10 600 30 720 50 900 30 1000" stroke="rgba(159,230,255,.55)" stroke-width="2" stroke-dasharray="0 1000" id="axLit" vector-effect="non-scaling-stroke"></path>
+<path pathLength="1000" d="M30 0C10 120 50 240 30 360S10 600 30 720 50 900 30 1000" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-dasharray="40 1000" stroke-dashoffset="40" id="axPulse" vector-effect="non-scaling-stroke" style="filter: drop-shadow(0 0 6px #9FE6FF) drop-shadow(0 0 16px #9FE6FF)"></path>
+</svg>
+<span class="axn" data-at="0.06" style="position: absolute; left: 50%; top: 6%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: #2A2C44; transition: background .4s, box-shadow .4s"></span><span class="axn" data-at="0.32" style="position: absolute; left: 50%; top: 32%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: #2A2C44; transition: background .4s, box-shadow .4s"></span><span class="axn" data-at="0.62" style="position: absolute; left: 50%; top: 62%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: #2A2C44; transition: background .4s, box-shadow .4s"></span><span class="axn" data-at="0.9" style="position: absolute; left: 50%; top: 90%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: #2A2C44; transition: background .4s, box-shadow .4s"></span>
+</div>
+<section id="stats" style="max-width: 1240px; margin: 0 auto; padding: 40px 40px 112px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; text-align: center">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(54px, 6vw, 80px); line-height: 1; color: #9FE6FF; text-shadow: 0 0 40px rgba(159,230,255,.45)" id="n1">86 billion</span>
+<span style="font-size: 15px; color: #B9B7CC">neurons in your brain</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(54px, 6vw, 80px); line-height: 1; color: #C3B5F5; text-shadow: 0 0 40px rgba(195,181,245,.45)" id="n2">100 trillion</span>
+<span style="font-size: 15px; color: #B9B7CC">connections between them</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: clamp(54px, 6vw, 80px); line-height: 1; color: #F2D58D; text-shadow: 0 0 40px rgba(242,213,141,.45)">One you.</span>
+<span style="font-size: 15px; color: #B9B7CC">and these are your stories</span>
+</div>
+</div>
+</section>
+
+<div class="dots">
+
+<section id="topics" style="max-width: 1240px; margin: 0 auto; padding: 64px 40px 104px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #9FE6FF">Topics</p>
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(42px, 5vw, 72px); line-height: 1; letter-spacing: -0.02em">Three networks <em style="color: #C3B5F5">to explore</em></h2>
+</div>
+<div style="position: relative">
+<div aria-hidden="true" class="wire"><span></span><span style="animation-delay: 2s"></span></div>
+<div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+
+<a href="#latest" class="card brainc" style="display: flex; flex-direction: column; gap: 18px; padding: 36px; border-radius: 28px; border: 1px solid rgba(241,238,248,.12); background: rgba(14,16,32,.95)">
+<svg aria-hidden="true" width="150" height="80" viewBox="0 0 150 80" fill="none"><path d="M10 60L40 20L72 46L104 14L140 52M40 20L72 46M72 46L60 74M104 14L126 6" stroke="rgba(159,230,255,.55)"></path><circle class="nb" cx="10" cy="60" r="3" fill="#9FE6FF"></circle><circle class="nb" style="animation-delay: .15s" cx="40" cy="20" r="4.5" fill="#FFFFFF"></circle><circle class="nb" style="animation-delay: .3s" cx="72" cy="46" r="4" fill="#9FE6FF"></circle><circle class="nb" style="animation-delay: .45s" cx="104" cy="14" r="3.5" fill="#C3B5F5"></circle><circle class="nb" style="animation-delay: .6s" cx="140" cy="52" r="3" fill="#9FE6FF"></circle><circle class="nb" style="animation-delay: .75s" cx="60" cy="74" r="2.5" fill="#F2D58D"></circle><circle class="nb" style="animation-delay: .9s" cx="126" cy="6" r="2.5" fill="#FFFFFF"></circle><circle cx="40" cy="20" r="14" fill="#9FE6FF" opacity=".15"></circle></svg>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 38px; line-height: 1">The Brain</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #B9B7CC">Dreams, emotions, memory, dopamine. What's actually happening inside your head, explained simply.</p>
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #9FE6FF">Hover to fire the network</span>
+</a>
+
+<a href="#latest" class="card feel" style="display: flex; flex-direction: column; gap: 18px; padding: 36px; border-radius: 28px; border: 1px solid rgba(241,238,248,.12); background: rgba(14,16,32,.95)">
+<div aria-hidden="true" style="height: 80px; display: flex; align-items: center; padding-left: 20px"><span class="orb" style="width: 34px; height: 34px; border-radius: 50%"></span></div>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 38px; line-height: 1">Feelings</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #B9B7CC">Fear, love, sadness, change. Why you feel what you feel, and what your brain is doing when you do.</p>
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #FFB6E1">Calm · love · joy</span>
+</a>
+
+<button type="button" class="flip" id="flipCard" aria-label="Wait, really? Tap for a surprising brain fact" style="position: relative; min-height: 330px; border-radius: 28px">
+<div style="position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.2,.8,.2,1); transform: rotateY(0deg)" id="flipInner">
+<div class="face" style="border: 1px solid rgba(241,238,248,.12); background: rgba(14,16,32,.95)">
+<svg aria-hidden="true" width="110" height="80" viewBox="0 0 110 80" fill="none"><path d="M55 8L66 30L96 40L66 50L55 72L44 50L14 40L44 30Z" stroke="rgba(242,213,141,.55)"></path><circle cx="55" cy="8" r="3" fill="#F2D58D"></circle><circle cx="96" cy="40" r="3" fill="#F2D58D"></circle><circle cx="55" cy="72" r="3" fill="#F2D58D"></circle><circle cx="14" cy="40" r="3" fill="#F2D58D"></circle><circle cx="55" cy="40" r="5" fill="#FFFFFF"></circle><circle cx="55" cy="40" r="14" fill="#F2D58D" opacity=".15"></circle></svg>
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 38px; line-height: 1">Wait, really?</span>
+<span style="font-size: 16px; line-height: 1.7; color: #B9B7CC">The body, evolution and the universe. Science that makes you stop scrolling.</span>
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #F2D58D">Tap for a surprising fact</span>
+</div>
+<div class="face" style="transform: rotateY(180deg); border: 1px solid rgba(242,213,141,.45); background: #14122A; justify-content: center">
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #F2D58D">Fact <span id="factNo">1</span> of 6</span>
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1.2" id="factText"></span>
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #A3A1B8">Tap for another</span>
+</div>
+</div>
+</button>
+
+</div>
+</div>
+</section>
+
+<section id="latest" style="max-width: 1240px; margin: 0 auto; padding: 40px 40px 112px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #9FE6FF">Articles</p>
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(42px, 5vw, 72px); line-height: 1; letter-spacing: -0.02em">Latest <em style="color: #C3B5F5">stories</em></h2>
+</div>
+
+<a href="dreams.html" class="card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 44px; padding: 40px; border-radius: 32px; border: 1px solid rgba(241,238,248,.12); background: rgba(14,16,32,.85)">
+<div aria-hidden="true" style="position: relative; min-height: 300px; border-radius: 22px; background: #0A0B1A; overflow: hidden">
+<svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%" fill="none">
+<g stroke="rgba(195,181,245,.45)" stroke-width="1.2"><path d="M240 150L150 80L80 60M150 80L120 140M240 150L340 70L410 50M340 70L380 130M240 150L350 220L420 250M240 150L130 230L70 260M130 230L170 280"></path></g>
+<circle cx="240" cy="150" r="60" fill="#C3B5F5" opacity=".08"></circle>
+<circle cx="240" cy="150" r="30" fill="#C3B5F5" opacity=".14"></circle>
+<circle cx="240" cy="150" r="9" fill="#FFFFFF"></circle>
+<circle cx="150" cy="80" r="4" fill="#9FE6FF"></circle><circle cx="80" cy="60" r="3" fill="#C3B5F5"></circle><circle cx="120" cy="140" r="3" fill="#9FE6FF"></circle>
+<circle cx="340" cy="70" r="4" fill="#9FE6FF"></circle><circle cx="410" cy="50" r="3" fill="#F2D58D"></circle><circle cx="380" cy="130" r="3" fill="#C3B5F5"></circle>
+<circle cx="350" cy="220" r="4" fill="#9FE6FF"></circle><circle cx="420" cy="250" r="3" fill="#C3B5F5"></circle>
+<circle cx="130" cy="230" r="4" fill="#9FE6FF"></circle><circle cx="70" cy="260" r="3" fill="#F2D58D"></circle><circle cx="170" cy="280" r="3" fill="#C3B5F5"></circle>
+<text x="268" y="128" fill="#C3B5F5" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="26">z</text>
+<text x="288" y="104" fill="#C3B5F5" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="18" opacity=".7">z</text>
+</svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px; justify-content: center">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #9FE6FF">The Brain · 3 min read</span>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(38px, 4vw, 58px); line-height: 1">What your brain does <em style="color: #C3B5F5">when you dream</em></h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #B9B7CC">Every night your brain becomes an artist, a storyteller and a quiet healer. And you rarely remember any of it.</p>
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 22px; color: #9FE6FF">Read the story →</span>
+</div>
+</a>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+<a href="itch.html" class="card" style="display: flex; flex-direction: column; gap: 14px; padding: 34px; border-radius: 28px; border: 1px solid rgba(241,238,248,.12); background: rgba(14,16,32,.85)">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #F2D58D">Wait, really? · 2 min</span>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1">Why scratching makes it itch more</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #B9B7CC">A tiny bit of pain blocks the itch, then your brain's calming chemical makes it come back stronger.</p>
+</a>
+<a href="change.html" class="card" style="display: flex; flex-direction: column; gap: 14px; padding: 34px; border-radius: 28px; border: 1px solid rgba(241,238,248,.12); background: rgba(14,16,32,.85)">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #FFB6E1">Feelings · 3 min</span>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1">Why change feels like a threat</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #B9B7CC">We say we want change. Then it shows up, and something inside us hesitates. That's biology.</p>
+</a>
+<a href="people.html" class="card" style="display: flex; flex-direction: column; gap: 14px; padding: 34px; border-radius: 28px; border: 1px solid rgba(241,238,248,.12); background: rgba(14,16,32,.85)">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #FFB6E1">Feelings · 3 min</span>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1">Why we are different people around different people</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #B9B7CC">The same person can light up one room and feel invisible in another. Your brain decides why.</p>
+</a>
+</div>
+</div>
+</section>
+
+<section id="about" style="max-width: 900px; margin: 0 auto; padding: 72px 32px 120px; display: flex; flex-direction: column; gap: 28px; text-align: center; align-items: center">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #9FE6FF">The end of the path</p>
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(42px, 5vw, 68px); line-height: 1.05">Meet the most interesting person: <em style="color: #C3B5F5">you.</em></h2>
+
+<div aria-hidden="true" style="position: relative; width: min(600px, 100%); aspect-ratio: 600 / 360">
+<svg viewBox="0 0 600 360" style="position: absolute; inset: 0; width: 100%; height: 100%" fill="none" stroke-linecap="round">
+<g stroke="#9FE6FF" stroke-width="2.4" style="filter: drop-shadow(0 0 6px rgba(159,230,255,.7))">
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" class="bl" style="transition: stroke-dashoffset 2.2s ease-out" d="M300 190C250 150 200 120 120 70"></path>
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" class="bl" style="transition: stroke-dashoffset 2.4s ease-out .1s" d="M300 190C240 190 170 200 70 190"></path>
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" class="bl" style="transition: stroke-dashoffset 2.2s ease-out .2s" d="M300 190C250 230 200 270 130 320"></path>
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" class="bl" style="transition: stroke-dashoffset 2.2s ease-out .15s" d="M300 190C350 150 400 120 480 70"></path>
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" class="bl" style="transition: stroke-dashoffset 2.4s ease-out .25s" d="M300 190C360 190 430 200 530 190"></path>
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" class="bl" style="transition: stroke-dashoffset 2.2s ease-out .3s" d="M300 190C350 230 400 270 470 320"></path>
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" class="bl" style="transition: stroke-dashoffset 2s ease-out .4s" d="M300 190C300 140 296 90 300 20"></path>
+</g>
+<g stroke="#C3B5F5" stroke-width="1.4" opacity=".8">
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" class="bl" style="transition: stroke-dashoffset 1.6s ease-out 1.2s" d="M200 125L170 150M190 194L160 230M206 252L180 240M400 125L430 150M410 194L440 230M394 252L420 240M298 90L270 70M300 70L330 52"></path>
+</g>
+<circle cx="300" cy="190" r="70" fill="#9FE6FF" class="heart" opacity=".14"></circle>
+<circle cx="300" cy="190" r="34" fill="#0E1030" stroke="#F1EEF8" stroke-width="2.5"></circle>
+<circle cx="300" cy="190" r="14" fill="#FFFFFF" style="filter: drop-shadow(0 0 14px #9FE6FF) drop-shadow(0 0 30px #C3B5F5)"></circle>
+</svg>
+<span style="position: absolute; left: 50%; top: 52.8%; transform: translate(-50%, 46px); font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 22px; color: #F1EEF8">you</span>
+<div id="thoughts"></div>
+</div>
+
+<p style="margin: 0; max-width: 640px; font-size: 18px; line-height: 1.8; color: #B9B7CC">Every story on this page ends here, with the brain that read it. Brain and Beyond is a place for anyone who has ever wondered why we feel, dream and think the way we do, created by <strong style="color: #F1EEF8; font-weight: 600">Madina Bakhriddinovna</strong>.</p>
+
+<form id="thoughtForm" style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(520px, 100%); padding: 24px; border-radius: 24px; border: 1px solid rgba(241,238,248,.12); background: rgba(14,16,32,.85)">
+<label for="thought" style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.2; color: #F1EEF8">What are you curious about tonight?</label>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; width: 100%; justify-content: center">
+<input id="thought" type="text" maxlength="28" placeholder="dreams, fear, love…" style="flex: 1 1 220px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1px solid rgba(241,238,248,.25); background: #05060F; color: #F1EEF8; font-family: Inter, system-ui, sans-serif; font-size: 16px">
+<button type="submit" class="cta" style="min-height: 48px; padding: 0 24px; border-radius: 999px; border: none; background: #F1EEF8; color: #05060F; font-family: Inter, system-ui, sans-serif; font-size: 15px; font-weight: 600; cursor: pointer">Light it up</button>
+</div>
+<span style="font-size: 13px; color: #A3A1B8"><span id="thoughtNote">Type a word and watch your neuron grow a new connection.</span></span>
+</form>
+
+<a href="dreams.html" class="ghost" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 1px solid rgba(241,238,248,.25); color: #F1EEF8; font-weight: 600; font-size: 16px; text-decoration: none">Start with the first story</a>
+</section>
+
+</div>
+</div>
+
+<footer style="max-width: 1240px; margin: 0 auto; padding: 28px 40px 44px; border-top: 1px solid rgba(241,238,248,.1); display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: 14px; color: #A3A1B8">
+<span>© 2026 Brain and Beyond · by Madina Bakhriddinovna</span>
+</footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
